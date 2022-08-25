@@ -17,7 +17,8 @@ def contain(command):
     #       array is exec's args)
     os._exit(0)  # TODO remove after
 
-@cli.command(context_settings=dict(ignore_unknown_options=True,))
+
+@cli.command(context_settings=dict(ignore_unknown_options=True, ))
 @click.argument('Command', required=True, nargs=-1)
 def run(command):
     pid = 0
@@ -31,6 +32,7 @@ def run(command):
 
     _, status = os.waitpid(pid, 0)
     print('{} exited with status {}'.format(pid, status))
+
 
 if __name__ == '__main__':
     cli()
